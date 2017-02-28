@@ -1,0 +1,1 @@
+insert into Meglepetes (ID,DATECREATED,ISDELETED,PRODUCTNAME,PRICE) values(1,'1999-01-01',null,'shit',123);
