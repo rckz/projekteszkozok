@@ -3,16 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package backend.repositories;
+package com.meglepeteskuldo.backend.repositories;
 
-import backend.entities.AuditSuperClass;
-import backend.entities.Meglepetes;
+import com.meglepeteskuldo.backend.entities.AuditSuperClass;
+import com.meglepeteskuldo.backend.entities.Meglepetes;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
 /**
  *
  * @author rckz
  */
+@Repository
 public interface MeglepetesRepository extends CrudRepository<Meglepetes, AuditSuperClass> {
     
 }
