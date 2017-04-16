@@ -35,7 +35,8 @@ public class MOrderService extends SuperService<MOrder, MOrderRepository> {
             save(order);
             customer.getOrders().add(order);
             mUserService.save(customer);
-            surprise.getOrders().add(order);
+            surprise.setOrder(order);
+            //surprise.getOrders().add(order);
             surpriseService.save(surprise);
         }
     }
@@ -45,7 +46,8 @@ public class MOrderService extends SuperService<MOrder, MOrderRepository> {
         customer.getOrders().remove(order);
         mUserService.save(customer);
         Surprise surprise = order.getSurprise();
-        surprise.getOrders().remove(order);
+        surprise.setOrder(order);
+        //surprise.getOrders().remove(order);
         surpriseService.save(surprise);
         super.delete(order);
     }

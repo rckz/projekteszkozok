@@ -6,11 +6,8 @@
 package com.meglepeteskuldo.backend.entities;
 
 import java.io.Serializable;
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -37,7 +34,7 @@ public class MOrder extends AuditSuperClass implements Serializable {
     @Getter
     @Setter
     @NonNull
-    @ManyToOne
+    @OneToOne
     private Surprise surprise;
     @Getter
     @Setter

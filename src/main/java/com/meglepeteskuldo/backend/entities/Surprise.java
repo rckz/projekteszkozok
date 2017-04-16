@@ -8,10 +8,8 @@ package com.meglepeteskuldo.backend.entities;
 import java.awt.Color;
 import java.io.Serializable;
 import java.util.List;
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -49,5 +47,8 @@ public class Surprise extends AuditSuperClass implements Serializable {
     @Getter
     @Setter
     private String imageUrl;
-
+    @Getter
+    @Setter
+    @OneToOne
+    private MOrder order;
 }

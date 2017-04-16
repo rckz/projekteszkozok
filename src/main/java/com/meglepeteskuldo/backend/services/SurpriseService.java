@@ -27,7 +27,8 @@ public class SurpriseService extends SuperService<Surprise, SurpriseRepository>{
             surprise.setColor(Color.getColor(color));
             surprise.setConsistency(Consistency.valueOf(consistency));
             surprise.setImageUrl(imageUrl);
-            surprise.setOrders(new ArrayList<>());
+            surprise.setOrder(null);
+            //surprise.setOrders(new ArrayList<>());
             repository.save(surprise);
         }else{
             throw new AlreadyExists();
