@@ -33,10 +33,7 @@ public abstract class SuperService <E extends AuditSuperClass, R extends SuperRe
     }
     public E findOne(Long id){
         return repository.findOne(id);
-    }
-    public void delete(Long id){
-        repository.delete(id);
-    }
+    }   
     public void delete(E e){
         repository.delete(e);
     }

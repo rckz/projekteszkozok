@@ -51,9 +51,6 @@ public class Surprise extends AuditSuperClass implements Serializable {
     private String imageUrl;
     @Getter
     @Setter
-    @OneToMany(cascade = {CascadeType.DETACH,
-        CascadeType.MERGE,
-        CascadeType.REFRESH,
-        CascadeType.PERSIST})
+    @OneToMany
     private List<MOrder> orders;
 }

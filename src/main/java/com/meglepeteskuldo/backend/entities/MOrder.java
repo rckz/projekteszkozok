@@ -32,18 +32,12 @@ public class MOrder extends AuditSuperClass implements Serializable {
     @Getter
     @Setter
     @NonNull
-    @ManyToOne(cascade = {CascadeType.DETACH,
-        CascadeType.MERGE,
-        CascadeType.REFRESH,
-        CascadeType.PERSIST})
+    @ManyToOne
     private MUser customer;
     @Getter
     @Setter
     @NonNull
-    @ManyToOne(cascade = {CascadeType.DETACH,
-        CascadeType.MERGE,
-        CascadeType.REFRESH,
-        CascadeType.PERSIST})
+    @ManyToOne
     private Surprise surprise;
     @Getter
     @Setter

@@ -44,10 +44,7 @@ public class MUser extends AuditSuperClass implements Serializable {
     @Setter
     private String address;
 
-    @OneToMany(cascade = {CascadeType.DETACH,
-        CascadeType.MERGE,
-        CascadeType.REFRESH,
-        CascadeType.PERSIST})
+    @OneToMany
     @Getter
     @Setter
     List<MOrder> orders;
