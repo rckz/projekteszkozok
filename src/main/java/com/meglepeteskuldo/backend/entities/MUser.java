@@ -34,22 +34,15 @@ public class MUser extends AuditSuperClass implements Serializable {
     private String name;
     @Getter
     @Setter
-
     private String password;
     @Getter
     @Setter
-<<<<<<< HEAD:src/main/java/backend/entities/Meglepetes.java
-    private String productName;
-    
-=======
-
     private String email;
     @Getter
     @Setter
     private String address;
 
     @OneToMany
->>>>>>> 9498d882295a88caa6fb9c00a478d285239f003a:src/main/java/com/meglepeteskuldo/backend/entities/MUser.java
     @Getter
     @Setter
     List<MOrder> orders;

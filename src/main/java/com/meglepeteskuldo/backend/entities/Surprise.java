@@ -49,8 +49,5 @@ public class Surprise extends AuditSuperClass implements Serializable {
     @Getter
     @Setter
     private String imageUrl;
-    @Getter
-    @Setter
-    @OneToMany
-    private List<MOrder> orders;
+
 }
