@@ -1,4 +1,4 @@
-package frontend;
+package com.meglepeteskuldo.frontend;
 
 
 import com.meglepeteskuldo.backend.entities.MUser;
