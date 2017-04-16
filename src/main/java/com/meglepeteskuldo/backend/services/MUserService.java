@@ -5,8 +5,10 @@
  */
 package com.meglepeteskuldo.backend.services;
 
+import com.meglepeteskuldo.AlreadyExists;
 import com.meglepeteskuldo.backend.entities.MUser;
 import com.meglepeteskuldo.backend.repositories.MUserRepository;
+import java.util.ArrayList;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,6 +18,20 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Service
 @Transactional
-public class MUserService extends SuperService<MUser, MUserRepository>{
-    
+public class MUserService extends SuperService<MUser, MUserRepository> {
+
+    public void registerNewUser(String name, String password, String email, String address) throws AlreadyExists {
+        if (repository.findByName(name) == null) {
+            MUser user = new MUser();
+            user.setName(name);
+            user.setPassword(password);
+            user.setEmail(email);
+            user.setAddress(address);
+            user.setOrders(new ArrayList<>());
+            repository.save(user);
+        }else{
+            throw new AlreadyExists("");
+        }
+    }
+
 }

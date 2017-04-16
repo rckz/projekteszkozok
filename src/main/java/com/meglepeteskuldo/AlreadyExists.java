@@ -3,14 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.meglepeteskuldo.backend.repositories;
-
-import com.meglepeteskuldo.backend.entities.MUser;
+package com.meglepeteskuldo;
 
 /**
  *
  * @author rckz
  */
-public interface MUserRepository extends SuperRepository<MUser>{
-    public MUser findByName(String name);
+public class AlreadyExists extends Exception{
+    public AlreadyExists(String message){
+        super(message);
+    }
+
+    public AlreadyExists() {
+        super();
+    }
 }

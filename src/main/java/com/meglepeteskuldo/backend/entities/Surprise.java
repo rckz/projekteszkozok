@@ -8,6 +8,7 @@ package com.meglepeteskuldo.backend.entities;
 import java.awt.Color;
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -50,6 +51,9 @@ public class Surprise extends AuditSuperClass implements Serializable {
     private String imageUrl;
     @Getter
     @Setter
-    @OneToMany
+    @OneToMany(cascade = {CascadeType.DETACH,
+        CascadeType.MERGE,
+        CascadeType.REFRESH,
+        CascadeType.PERSIST})
     private List<MOrder> orders;
 }

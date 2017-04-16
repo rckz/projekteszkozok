@@ -7,6 +7,7 @@ package com.meglepeteskuldo.backend.entities;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -42,7 +43,12 @@ public class MUser extends AuditSuperClass implements Serializable {
     @Getter
     @Setter
     private String address;
-    
-    @OneToMany
+
+    @OneToMany(cascade = {CascadeType.DETACH,
+        CascadeType.MERGE,
+        CascadeType.REFRESH,
+        CascadeType.PERSIST})
+    @Getter
+    @Setter
     List<MOrder> orders;
 }

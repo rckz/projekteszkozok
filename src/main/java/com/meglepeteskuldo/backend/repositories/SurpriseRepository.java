@@ -12,5 +12,5 @@ import com.meglepeteskuldo.backend.entities.Surprise;
  * @author rckz
  */
 public interface SurpriseRepository extends SuperRepository<Surprise>{
-    
+    public Surprise findByProductName(String productName);
 }

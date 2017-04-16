@@ -6,14 +6,10 @@
 package com.meglepeteskuldo.backend.services;
 
 import com.meglepeteskuldo.backend.entities.AuditSuperClass;
-import com.meglepeteskuldo.backend.entities.Surprise;
 import com.meglepeteskuldo.backend.repositories.SuperRepository;
-import com.meglepeteskuldo.backend.repositories.SurpriseRepository;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
@@ -22,7 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 public abstract class SuperService <E extends AuditSuperClass, R extends SuperRepository<E>>{
     @Autowired
-    private R repository;
+    protected R repository;
 
     public void save(E entity) {
         repository.save(entity);        
@@ -46,5 +42,5 @@ public abstract class SuperService <E extends AuditSuperClass, R extends SuperRe
     }
     public boolean exists(Long id){
         return repository.exists(id);
-    }
+    }    
 }

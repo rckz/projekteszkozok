@@ -6,6 +6,7 @@
 package com.meglepeteskuldo.backend.entities;
 
 import java.io.Serializable;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -26,17 +27,23 @@ import lombok.Setter;
 @AllArgsConstructor
 @Builder
 @Table(name = "MOrder")
-public class MOrder extends AuditSuperClass implements Serializable{
-    
+public class MOrder extends AuditSuperClass implements Serializable {
+
     @Getter
     @Setter
     @NonNull
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.DETACH,
+        CascadeType.MERGE,
+        CascadeType.REFRESH,
+        CascadeType.PERSIST})
     private MUser customer;
     @Getter
     @Setter
     @NonNull
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.DETACH,
+        CascadeType.MERGE,
+        CascadeType.REFRESH,
+        CascadeType.PERSIST})
     private Surprise surprise;
     @Getter
     @Setter
