@@ -26,7 +26,7 @@ import lombok.Setter;
 public class Meglepetes extends AuditSuperClass implements Serializable {
     
     @Getter
-    @Setter    
+    @Setter
     private String productName;
     
     @Getter

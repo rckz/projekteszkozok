@@ -9,5 +9,6 @@ public class MeglepetesKuldoApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(MeglepetesKuldoApplication.class, args);
+		
 	}
 }
