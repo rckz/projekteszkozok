@@ -5,13 +5,18 @@
  */
 package com.meglepeteskuldo.backend.entities;
 
+import java.awt.Color;
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 /**
@@ -22,14 +27,29 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Table(name = "Meglepetes")
-public class Meglepetes extends AuditSuperClass implements Serializable {
-    
-    @Getter
-    @Setter    
-    private String productName;
-    
+@Table(name = "Surprise")
+@RequiredArgsConstructor
+public class Surprise extends AuditSuperClass implements Serializable {
+
     @Getter
     @Setter
+    @NonNull
+    private String productName;
+    @Getter
+    @Setter
+    @NonNull
     private int price;
+    @Getter
+    @Setter
+    private Color color;
+    @Getter
+    @Setter
+    private Consistency consistency;
+    @Getter
+    @Setter
+    private String imageUrl;
+    @Getter
+    @Setter
+    @OneToMany
+    private List<MOrder> orders;
 }

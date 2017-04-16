@@ -6,7 +6,6 @@
 package com.meglepeteskuldo.backend.repositories;
 
 import com.meglepeteskuldo.backend.entities.AuditSuperClass;
-import com.meglepeteskuldo.backend.entities.Meglepetes;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -15,6 +14,6 @@ import org.springframework.stereotype.Repository;
  * @author rckz
  */
 @Repository
-public interface MeglepetesRepository extends CrudRepository<Meglepetes, AuditSuperClass> {
+public interface SuperRepository<E extends AuditSuperClass> extends CrudRepository<E, Long>{
     
 }

@@ -1,7 +1,7 @@
 package com.meglepeteskuldo;
 
-import com.meglepeteskuldo.backend.entities.Meglepetes;
-import com.meglepeteskuldo.backend.services.MeglepetesService;
+import com.meglepeteskuldo.backend.entities.Surprise;
+import com.meglepeteskuldo.backend.services.SurpriseService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,13 +13,13 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class MeglepetesKuldoApplicationTests {
 
     @Autowired
-    MeglepetesService meglepetesService;
+    SurpriseService supriseService;
 
     @Test
 //    @Ignore
     public void contextLoads() {
-        meglepetesService.save(new Meglepetes("SHIT", 12));
-        meglepetesService.findAll().get(0).getProductName();
+        supriseService.save(new Surprise("SHIT", 12));
+        System.out.println(supriseService.findAll().get(0).getProductName());        
     }
 
 }
