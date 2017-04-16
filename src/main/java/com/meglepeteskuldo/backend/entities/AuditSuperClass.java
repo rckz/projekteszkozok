@@ -3,13 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package backend.entities;
+package com.meglepeteskuldo.backend.entities;
 
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -28,6 +30,7 @@ public class AuditSuperClass implements Serializable{
     
     @Getter
     @Setter    
+    @Temporal(TemporalType.TIMESTAMP)
     private Date dateCreated;
     
     @Getter

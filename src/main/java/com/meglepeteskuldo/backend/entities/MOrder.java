@@ -3,15 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package backend.entities;
+package com.meglepeteskuldo.backend.entities;
 
 import java.io.Serializable;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 import lombok.Setter;
 
 /**
@@ -22,14 +26,24 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Table(name = "Meglepetes")
-public class Meglepetes extends AuditSuperClass implements Serializable {
-    
+@Table(name = "MOrder")
+public class MOrder extends AuditSuperClass implements Serializable {
+
     @Getter
     @Setter
-    private String productName;
-    
+    @NonNull
+    @ManyToOne
+    private MUser customer;
     @Getter
     @Setter
-    private int price;
+    @NonNull
+    @ManyToOne
+    private Surprise surprise;
+    @Getter
+    @Setter
+    @NonNull
+    private String address;
+    @Getter
+    @Setter
+    private String description;
 }
