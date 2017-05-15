@@ -37,8 +37,8 @@ public class ButtonLayout extends HorizontalLayout {
     }
 
     private void customizeButton(Button button){
-        button.setWidth(70, Unit.PIXELS);
-        button.setHeight(30, Unit.PIXELS);
+        //button.setWidth(70, Unit.PIXELS);
+        //button.setHeight(30, Unit.PIXELS);
         //button.addStyleName("button-navigation");
         addComponent(button);
         setComponentAlignment(button, Alignment.MIDDLE_CENTER);
