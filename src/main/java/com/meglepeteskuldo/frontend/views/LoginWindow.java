@@ -35,7 +35,7 @@ public class LoginWindow extends Window {
 		HorizontalLayout hl = new HorizontalLayout();
 		Label l2 = new Label("Nincs még accountod? ");
 		Button signupBt = new Button("Regisztrálj most!");
-		signupBt.addClickListener(this::doSignup);
+		signupBt.addClickListener(this::openRegisterWindow);
 		signupBt.setStyleName("link");
 		
 		hl.addComponents(l2, signupBt);
@@ -49,7 +49,7 @@ public class LoginWindow extends Window {
 		
 	}
 	
-	private void doSignup(ClickEvent e){
+	private void openRegisterWindow(ClickEvent e){
 		
 	}
 }
