@@ -48,4 +48,6 @@ user -> belépés gomb -> belépési ablak -> be tud lépni<br />
       böngészés gomb -> termékek böngészése -> szűrés névre, színre, állagra, viszkozitásra<br />
       Rendelés gomb -> rendelés információk megadása(név, csomagopciók, csomag címzés, üzenet a címzettnek) -> Küldés gomb -> rendelés          végbemenetele<br />
       <br />
+      
+ Leírást a projektről, fejlesztőnek, ha akar bele fejleszteni mit kell tennie. letölti a repot githubról, valamilyen ide-ben fejleszt benne, maven clean install, aztán el is tudja indítani, valami ilyesmire gondolok.     
  asszem ennyi elég lesz     
