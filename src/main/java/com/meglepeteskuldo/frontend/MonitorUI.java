@@ -28,10 +28,11 @@ public class MonitorUI extends UI {
         mainLayout.setSpacing(true);
         mainLayout.setSizeFull();
 
-        buttonLayout = new ButtonLayout();
-        mainLayout.addComponent(buttonLayout);
-
         createContentLayout();
+        buttonLayout = new ButtonLayout(contentLayout);
+        mainLayout.addComponent(buttonLayout);
+        mainLayout.addComponent(contentLayout);
+        
 
         setContent(mainLayout);
     }
@@ -39,7 +40,7 @@ public class MonitorUI extends UI {
     private void createContentLayout() {
         contentLayout = new VerticalLayout();
         contentLayout.setSizeFull();
-        mainLayout.addComponent(contentLayout);
+        
     }
 
     public MUser getUser() {

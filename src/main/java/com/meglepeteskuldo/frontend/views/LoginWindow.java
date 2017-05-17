@@ -7,6 +7,7 @@ import com.vaadin.ui.Label;
 import com.vaadin.ui.Layout;
 import com.vaadin.ui.PasswordField;
 import com.vaadin.ui.TextField;
+import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.Window;
 
@@ -63,6 +64,7 @@ public class LoginWindow extends Window {
 	}
 	
 	private void openRegisterWindow(ClickEvent e){
-		
+		UI.getCurrent().removeWindow(this);
+		UI.getCurrent().addWindow(new RegisterWindow());
 	}
 }
