@@ -2,6 +2,7 @@ package com.meglepeteskuldo.frontend;
 
 import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Button;
+import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.HorizontalLayout;
 
 /**
@@ -24,16 +25,20 @@ public class ButtonLayout extends HorizontalLayout {
     private void init() {
         homeButton = new Button("Főoldal");
         customizeButton(homeButton);
+        homeButton.addClickListener(this::showHomeView);
 
         browserButton = new Button("Böngészés");
         customizeButton(browserButton);
+        browserButton.addClickListener(this::showBrowserView);
 
         orderButton = new Button("Rendelés");
         customizeButton(orderButton);
+        orderButton.addClickListener(this::showOrderView);
 
         loginButton = new Button("Belépés");
         customizeButton(loginButton);
         loginButton.setStyleName("link");
+        loginButton.addClickListener(this::showLoginWindow);
     }
 
     private void customizeButton(Button button){
@@ -42,5 +47,21 @@ public class ButtonLayout extends HorizontalLayout {
         //button.addStyleName("button-navigation");
         addComponent(button);
         setComponentAlignment(button, Alignment.MIDDLE_CENTER);
+    }
+    
+    private void showHomeView(ClickEvent e){
+    	
+    }
+    
+    private void showBrowserView(ClickEvent e){
+    	
+    }
+    
+    private void showOrderView(ClickEvent e){
+	
+    }
+    
+    private void showLoginWindow(ClickEvent e){
+	
     }
 }

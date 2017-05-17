@@ -16,6 +16,19 @@ import com.vaadin.ui.Window;
 public class LoginWindow extends Window {
     //felugró modális ablak
 	
+	private VerticalLayout vl;
+	private HorizontalLayout hl;
+	
+	private Label l;
+	private Label l2;
+	
+	private TextField uNameTf;
+	
+	private PasswordField pwdPf;
+	
+	private Button loginBt;
+	private Button signupBt;
+	
 	public LoginWindow(){
 		super("Bejelentkezés");
 		center();
@@ -23,18 +36,18 @@ public class LoginWindow extends Window {
 	}
 	
 	private Layout createContent(){
-		VerticalLayout vl = new VerticalLayout();
+		vl = new VerticalLayout();
 		
-		Label l = new Label("Belépés");
-		TextField uNameTf = new TextField("Felhasználói név");
-		PasswordField pwdPf = new PasswordField("Jelszó");
+		l = new Label("Belépés");
+		uNameTf = new TextField("Felhasználói név");
+		pwdPf = new PasswordField("Jelszó");
 		
-		Button loginBt = new Button("Belépés");
+		loginBt = new Button("Belépés");
 		loginBt.addClickListener(this::doLogin);
 		
-		HorizontalLayout hl = new HorizontalLayout();
-		Label l2 = new Label("Nincs még accountod? ");
-		Button signupBt = new Button("Regisztrálj most!");
+		hl = new HorizontalLayout();
+		l2 = new Label("Nincs még accountod? ");
+		signupBt = new Button("Regisztrálj most!");
 		signupBt.addClickListener(this::openRegisterWindow);
 		signupBt.setStyleName("link");
 		

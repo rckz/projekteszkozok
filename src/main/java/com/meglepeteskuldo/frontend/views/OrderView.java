@@ -4,6 +4,7 @@ import com.vaadin.ui.Button;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.ComboBox;
 import com.vaadin.ui.DateField;
+import com.vaadin.ui.TextArea;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.VerticalLayout;
 
@@ -12,8 +13,14 @@ import com.vaadin.ui.VerticalLayout;
  */
 public class OrderView extends VerticalLayout{
     //ide mehet a form szerű dolog küldéssel
-	//Most nézem kétféle küldést csináltál melyik lesz végül? (3-as, és 5-ös)
-	//Vagy netalántán az egyikből következik a másik?
+	
+	private ComboBox nameCb;
+	private ComboBox optionsCb;
+	
+	private TextArea addressTa;
+	private TextArea msgTa;
+	
+	private Button sendBt;
 	
 	public OrderView() {
 		super();
@@ -21,17 +28,19 @@ public class OrderView extends VerticalLayout{
 	}
 	
 	private void setContent(){
-		TextField nameTf = new TextField("Fantázianév");
-		ComboBox colorCb = new ComboBox<>("Szín");//lehetne colorpicker is
-		ComboBox consistencyCb = new ComboBox<>("Állag");
-		ComboBox viscosityCb = new ComboBox<>("Viszkozitás");
-		DateField dateDf = new DateField("Keletkezett");
-		Button sendBt = new Button("Küldés");
+		nameCb = new ComboBox<>();
+		optionsCb = new ComboBox<>();
+		addressTa = new TextArea();
+		msgTa = new TextArea();
+		sendBt = new Button("Küldés");
 		
-		nameTf.setPlaceholder("Fantázianév more");
+		nameCb.setPlaceholder("Termék fantázianeve");
+		optionsCb.setPlaceholder("Csomag opciók");
+		addressTa.setPlaceholder("Csomag címzése");
+		msgTa.setPlaceholder("Üzenet a címzettnek");
 		sendBt.addClickListener(this::doSend);
 		
-		this.addComponents(nameTf, colorCb, consistencyCb, viscosityCb, dateDf, sendBt);
+		this.addComponents(nameCb, optionsCb, addressTa, msgTa, sendBt);
 	}
 	
 	private void doSend(ClickEvent e){
