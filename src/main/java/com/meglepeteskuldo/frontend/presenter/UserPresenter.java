@@ -3,7 +3,7 @@ package com.meglepeteskuldo.frontend.presenter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.meglepeteskuldo.AlreadyExists;
+import com.meglepeteskuldo.errors.AlreadyExists;
 import com.meglepeteskuldo.backend.services.MUserService;
 
 @Service

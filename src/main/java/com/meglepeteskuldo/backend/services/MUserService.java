@@ -5,9 +5,10 @@
  */
 package com.meglepeteskuldo.backend.services;
 
-import com.meglepeteskuldo.AlreadyExists;
+import com.meglepeteskuldo.errors.AlreadyExists;
 import com.meglepeteskuldo.backend.entities.MUser;
 import com.meglepeteskuldo.backend.repositories.MUserRepository;
+import com.meglepeteskuldo.errors.UsernameOrPasswordMismatch;
 import java.util.ArrayList;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -32,6 +33,14 @@ public class MUserService extends SuperService<MUser, MUserRepository> {
         }else{
             throw new AlreadyExists("");
         }
+    }
+    
+    public boolean userCanLogin(String name,String password) throws UsernameOrPasswordMismatch{
+        MUser found = repository.findByName(name);
+        if(found == null || !found.getPassword().equals(password)){
+            throw new UsernameOrPasswordMismatch();
+        }
+        return true;
     }
 
 }

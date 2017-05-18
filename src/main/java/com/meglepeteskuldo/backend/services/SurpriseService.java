@@ -5,7 +5,7 @@
  */
 package com.meglepeteskuldo.backend.services;
 
-import com.meglepeteskuldo.AlreadyExists;
+import com.meglepeteskuldo.errors.AlreadyExists;
 import com.meglepeteskuldo.backend.entities.Consistency;
 import com.meglepeteskuldo.backend.entities.Surprise;
 import com.meglepeteskuldo.backend.repositories.SurpriseRepository;

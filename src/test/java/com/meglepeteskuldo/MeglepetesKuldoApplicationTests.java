@@ -1,5 +1,6 @@
 package com.meglepeteskuldo;
 
+import com.meglepeteskuldo.errors.AlreadyExists;
 import com.meglepeteskuldo.backend.entities.Surprise;
 import com.meglepeteskuldo.backend.services.MOrderService;
 import com.meglepeteskuldo.backend.services.MUserService;

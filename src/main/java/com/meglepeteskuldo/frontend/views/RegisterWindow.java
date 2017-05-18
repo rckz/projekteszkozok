@@ -1,6 +1,6 @@
 package com.meglepeteskuldo.frontend.views;
 
-import com.meglepeteskuldo.AlreadyExists;
+import com.meglepeteskuldo.errors.AlreadyExists;
 import com.meglepeteskuldo.frontend.MonitorUI;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.HorizontalLayout;

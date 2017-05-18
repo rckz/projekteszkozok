@@ -3,18 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.meglepeteskuldo;
+package com.meglepeteskuldo.errors;
 
 /**
  *
  * @author rckz
  */
-public class AlreadyExists extends Exception{
-    public AlreadyExists(String message){
-        super(message);
+public class UsernameOrPasswordMismatch extends Exception{
+
+    public UsernameOrPasswordMismatch() {
     }
 
-    public AlreadyExists() {
-        super();
+    public UsernameOrPasswordMismatch(String string) {
+        super(string);
     }
+    
 }
