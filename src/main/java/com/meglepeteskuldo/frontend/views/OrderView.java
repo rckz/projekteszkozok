@@ -1,11 +1,13 @@
 package com.meglepeteskuldo.frontend.views;
 
+import com.meglepeteskuldo.frontend.MonitorUI;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.ComboBox;
 import com.vaadin.ui.DateField;
 import com.vaadin.ui.TextArea;
 import com.vaadin.ui.TextField;
+import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
 
 /**
@@ -44,6 +46,8 @@ public class OrderView extends VerticalLayout{
 	}
 	
 	private void doSend(ClickEvent e){
-		
+		//Majd ha fel lesz töltve adatokkal, meg lesz hibakezelés
+		//Surprise s = nameCb.getSelectedItem();
+		//MonitorUI.getCurrent().getOp().sendOrder(MonitorUI.getCurrent().getUser(), s, addressTa.getValue(), msgTa.getValue());
 	}
 }

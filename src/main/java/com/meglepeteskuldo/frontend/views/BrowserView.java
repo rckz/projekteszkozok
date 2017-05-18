@@ -14,6 +14,8 @@ import com.vaadin.ui.VerticalLayout;
  */
 public class BrowserView extends VerticalLayout {
 	
+	
+	
 	private Panel p;
 	private HorizontalLayout menuHl;
 	private CssLayout picturesCl;

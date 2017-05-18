@@ -1,9 +1,13 @@
 package com.meglepeteskuldo.frontend.views;
 
+import com.meglepeteskuldo.AlreadyExists;
+import com.meglepeteskuldo.frontend.MonitorUI;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.Layout;
+import com.vaadin.ui.Notification;
+import com.vaadin.ui.Notification.Type;
 import com.vaadin.ui.PasswordField;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.UI;
@@ -48,12 +52,12 @@ public class RegisterWindow extends Window {
 		pwdPf = new PasswordField("Jelszó");
 		
 		signupBt = new Button("Regisztálás");
-		signupBt.addClickListener(this::openLoginWindow);
+		signupBt.addClickListener(this::doSignup);
 		
 		hl = new HorizontalLayout();
 		l2 = new Label("Van már accountod? ");
 		loginBt = new Button("Lépj be vele!");
-		loginBt.addClickListener(this::doSignup);
+		loginBt.addClickListener(this::openLoginWindow);
 		loginBt.setStyleName("link");
 		
 		hl.addComponents(l2, loginBt);
@@ -64,11 +68,19 @@ public class RegisterWindow extends Window {
 	}
 	
 	private void openLoginWindow(ClickEvent e){
-		
+		UI.getCurrent().removeWindow(this);
+		UI.getCurrent().addWindow(new LoginWindow());
 	}
 	
 	private void doSignup(ClickEvent e){
-		UI.getCurrent().removeWindow(this);
-		UI.getCurrent().addWindow(new LoginWindow());
+		try {
+			MonitorUI.getCurrent().getUp().register(uNameTf.getValue(), pwdPf.getValue(), emailTf.getValue(), bankAccountTf.getValue());
+		} catch (AlreadyExists e1) {
+			generateNotification("Már létezik ilyen felhasználó"+e1);
+		}
+	}
+
+	private void generateNotification(String msg) {
+		Notification not = new Notification(msg, Type.ERROR_MESSAGE);
 	}
 }

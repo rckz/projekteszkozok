@@ -1,5 +1,10 @@
 package com.meglepeteskuldo.frontend;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.meglepeteskuldo.frontend.presenter.OrderPresenter;
+import com.meglepeteskuldo.frontend.presenter.SurprisePresenter;
+import com.meglepeteskuldo.frontend.presenter.UserPresenter;
 import com.meglepeteskuldo.frontend.views.BrowserView;
 import com.meglepeteskuldo.frontend.views.HomeView;
 import com.meglepeteskuldo.frontend.views.LoginWindow;
@@ -16,7 +21,8 @@ import com.vaadin.ui.Window;
  * Created by Krisztián on 2017. 04. 17..
  */
 public class ButtonLayout extends HorizontalLayout {
-	VerticalLayout contentLayout;
+	
+	private VerticalLayout contentLayout;
 
 	private Button homeButton;
 	private Button browserButton;

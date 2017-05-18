@@ -1,5 +1,6 @@
 package com.meglepeteskuldo.frontend.views;
 
+import com.meglepeteskuldo.frontend.MonitorUI;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.HorizontalLayout;
@@ -60,7 +61,7 @@ public class LoginWindow extends Window {
 	}
 	
 	private void doLogin(ClickEvent e){
-		
+		MonitorUI.getCurrent().getUp().login(uNameTf.getValue(), pwdPf.getValue());
 	}
 	
 	private void openRegisterWindow(ClickEvent e){

@@ -1,7 +1,14 @@
 package com.meglepeteskuldo.frontend;
 
 
+
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.meglepeteskuldo.backend.entities.MUser;
+import com.meglepeteskuldo.frontend.presenter.OrderPresenter;
+import com.meglepeteskuldo.frontend.presenter.SurprisePresenter;
+import com.meglepeteskuldo.frontend.presenter.UserPresenter;
+import com.vaadin.annotations.PreserveOnRefresh;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.spring.annotation.SpringUI;
 import com.vaadin.ui.HorizontalLayout;
@@ -13,8 +20,19 @@ import com.vaadin.ui.VerticalLayout;
 
 //@Theme("mytheme")
 @SpringUI
+@PreserveOnRefresh
 public class MonitorUI extends UI {
-    private MUser user;
+	
+	@Autowired
+	private OrderPresenter op;
+	
+	@Autowired
+	private UserPresenter up;
+	
+	@Autowired
+	private SurprisePresenter sp;
+
+	private MUser user;
 
     private VerticalLayout mainLayout;
     private VerticalLayout contentLayout;
@@ -39,8 +57,7 @@ public class MonitorUI extends UI {
 
     private void createContentLayout() {
         contentLayout = new VerticalLayout();
-        contentLayout.setSizeFull();
-        
+        contentLayout.setSizeFull();      
     }
 
     public MUser getUser() {
@@ -66,4 +83,16 @@ public class MonitorUI extends UI {
     public VerticalLayout getContentLayout() {
         return contentLayout;
     }
+    
+    public OrderPresenter getOp() {
+		return op;
+	}
+
+	public UserPresenter getUp() {
+		return up;
+	}
+
+	public SurprisePresenter getSp() {
+		return sp;
+	}
 }
