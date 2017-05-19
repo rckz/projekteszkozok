@@ -35,12 +35,12 @@ public class MUserService extends SuperService<MUser, MUserRepository> {
         }
     }
     
-    public boolean userCanLogin(String name,String password) throws UsernameOrPasswordMismatch{
+    public MUser userCanLogin(String name,String password) throws UsernameOrPasswordMismatch{
         MUser found = repository.findByName(name);
         if(found == null || !found.getPassword().equals(password)){
             throw new UsernameOrPasswordMismatch();
         }
-        return true;
+        return found;
     }
 
 }
