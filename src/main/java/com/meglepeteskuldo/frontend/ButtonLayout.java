@@ -28,6 +28,7 @@ public class ButtonLayout extends HorizontalLayout {
 	private Button browserButton;
 	private Button orderButton;
 	private Button loginButton;
+	private Button logoutButton;
 
 	public ButtonLayout(VerticalLayout contentLayout) {
 		this.contentLayout = contentLayout;
@@ -55,6 +56,10 @@ public class ButtonLayout extends HorizontalLayout {
 		customizeButton(loginButton);
 		loginButton.setStyleName("link");
 		loginButton.addClickListener(this::showLoginWindow);
+		
+		logoutButton = new Button("Kilépés");
+		logoutButton.setStyleName("link");
+		logoutButton.addClickListener(this::doLogout);
 	}
 
 	private void customizeButton(Button button) {
@@ -76,13 +81,26 @@ public class ButtonLayout extends HorizontalLayout {
 	}
 
 	private void showOrderView(ClickEvent e) {
-		contentLayout.removeAllComponents();
-		contentLayout.addComponent(new OrderView());
+		if (MonitorUI.getCurrent().getUser() == null){
+			showLoginWindow(e);
+		}else{
+			contentLayout.removeAllComponents();
+			contentLayout.addComponent(new OrderView());
+		}	
 	}
 
 	private void showLoginWindow(ClickEvent e) {
-		if (UI.getCurrent().getWindows().isEmpty()) {
+		if (UI.getCurrent().getWindows().isEmpty() && MonitorUI.getCurrent().getUser()==null) {
 			UI.getCurrent().addWindow(new LoginWindow());
 		}
+	}
+	
+	private void doLogout(ClickEvent e){
+		MonitorUI.getCurrent().setUser(null);
+		this.replaceComponent(logoutButton, loginButton);
+	}
+	
+	public void doLogin(){
+		this.replaceComponent(loginButton, logoutButton);
 	}
 }

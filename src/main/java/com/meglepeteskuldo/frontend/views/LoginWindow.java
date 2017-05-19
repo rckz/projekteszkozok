@@ -1,11 +1,16 @@
 package com.meglepeteskuldo.frontend.views;
 
+import com.meglepeteskuldo.backend.entities.MUser;
+import com.meglepeteskuldo.errors.UsernameOrPasswordMismatch;
+import com.meglepeteskuldo.frontend.ButtonLayout;
 import com.meglepeteskuldo.frontend.MonitorUI;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.Layout;
+import com.vaadin.ui.Notification;
+import com.vaadin.ui.Notification.Type;
 import com.vaadin.ui.PasswordField;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.UI;
@@ -61,11 +66,22 @@ public class LoginWindow extends Window {
 	}
 	
 	private void doLogin(ClickEvent e){
-		MonitorUI.getCurrent().getUp().login(uNameTf.getValue(), pwdPf.getValue());
+		try {
+			MUser user = MonitorUI.getCurrent().getUp().login(uNameTf.getValue(), pwdPf.getValue());
+			MonitorUI.getCurrent().setUser(user);
+			MonitorUI.getCurrent().removeWindow(this);
+			((ButtonLayout) MonitorUI.getCurrent().getButtonLayout()).doLogin();
+		} catch (UsernameOrPasswordMismatch e1) {
+			generateNotification("Hibás felhasználónév, vagy jelszó"+e1);
+		}
 	}
 	
 	private void openRegisterWindow(ClickEvent e){
 		UI.getCurrent().removeWindow(this);
 		UI.getCurrent().addWindow(new RegisterWindow());
+	}
+	
+	private void generateNotification(String msg){
+		Notification not = new Notification(msg, Type.ERROR_MESSAGE);
 	}
 }
