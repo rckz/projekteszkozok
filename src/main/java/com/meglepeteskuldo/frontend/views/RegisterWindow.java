@@ -4,6 +4,7 @@ import com.meglepeteskuldo.errors.AlreadyExists;
 import com.meglepeteskuldo.errors.UsernameOrPasswordMismatch;
 import com.meglepeteskuldo.frontend.ButtonLayout;
 import com.meglepeteskuldo.frontend.MonitorUI;
+import com.vaadin.server.Page;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Label;
@@ -83,11 +84,11 @@ public class RegisterWindow extends Window {
 		} catch (AlreadyExists e1) {
 			generateNotification("Már létezik ilyen felhasználó" + e1);
 		} catch (UsernameOrPasswordMismatch e1) {
-			generateNotification("Már létezik ilyen felhasználó" + e1);
+			generateNotification("Hibás felhasználónév, vagy jelszó" + e1);
 		}
 	}
 
 	private void generateNotification(String msg) {
-		Notification not = new Notification(msg, Type.ERROR_MESSAGE);
+		new Notification(msg, Type.ERROR_MESSAGE).show(Page.getCurrent());
 	}
 }
