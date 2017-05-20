@@ -6,16 +6,9 @@ import com.meglepeteskuldo.backend.entities.Surprise;
 import com.meglepeteskuldo.frontend.ButtonLayout;
 import com.meglepeteskuldo.frontend.MonitorUI;
 import com.vaadin.server.Page;
-import com.vaadin.ui.Button;
+import com.vaadin.ui.*;
 import com.vaadin.ui.Button.ClickEvent;
-import com.vaadin.ui.ComboBox;
-import com.vaadin.ui.DateField;
-import com.vaadin.ui.Notification;
 import com.vaadin.ui.Notification.Type;
-import com.vaadin.ui.TextArea;
-import com.vaadin.ui.TextField;
-import com.vaadin.ui.UI;
-import com.vaadin.ui.VerticalLayout;
 
 /**
  * Created by Krisztián on 2017. 04. 17..
@@ -38,12 +31,16 @@ public class OrderView extends VerticalLayout {
 
 	private void setContent() {
 		nameCb = new ComboBox<>();
+		nameCb.setWidth(450, Unit.PIXELS);
 		nameCb.setItems(MonitorUI.getCurrent().getSp().getAllSurprise());
 		nameCb.setItemCaptionGenerator((e) -> e.getProductName() + " - " + e.getPrice() + "$");
 		optionsCb = new ComboBox<>();
+		optionsCb.setWidth(450, Unit.PIXELS);
 		optionsCb.setItems(Arrays.asList("gyorsposta", "még gyorsabb", "ráér holnap is"));
 		addressTa = new TextArea();
+		addressTa.setWidth(450, Unit.PIXELS);
 		msgTa = new TextArea();
+		msgTa.setWidth(450, Unit.PIXELS);
 		sendBt = new Button("Küldés");
 
 		nameCb.setPlaceholder("Termék fantázianeve");
@@ -53,6 +50,11 @@ public class OrderView extends VerticalLayout {
 		sendBt.addClickListener(this::doSend);
 
 		this.addComponents(nameCb, optionsCb, addressTa, msgTa, sendBt);
+		this.setComponentAlignment(nameCb, Alignment.MIDDLE_CENTER);
+		this.setComponentAlignment(optionsCb, Alignment.MIDDLE_CENTER);
+		this.setComponentAlignment(addressTa, Alignment.MIDDLE_CENTER);
+		this.setComponentAlignment(msgTa, Alignment.MIDDLE_CENTER);
+		this.setComponentAlignment(sendBt, Alignment.MIDDLE_CENTER);
 	}
 
 	private void doSend(ClickEvent e) {
@@ -62,7 +64,10 @@ public class OrderView extends VerticalLayout {
 		} else {
 			MonitorUI.getCurrent().getOp().sendOrder(MonitorUI.getCurrent().getUser(), nameCb.getValue(),
 					addressTa.getValue(), msgTa.getValue());
-			new Notification("A rendelés feladva", Type.HUMANIZED_MESSAGE).show(Page.getCurrent());
+			Notification notification = new Notification("A rendelés feladva", Type.HUMANIZED_MESSAGE);
+			notification.setDelayMsec(3000);
+			notification.show(Page.getCurrent());
+
 			((ButtonLayout)MonitorUI.getCurrent().getButtonLayout()).getHomeButton().click();
 		}
 	}

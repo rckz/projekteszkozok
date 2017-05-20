@@ -83,10 +83,10 @@ public class BrowserView extends VerticalLayout {
 		for (Surprise surprise : surprises) {
 			HorizontalLayout surpriseLayout = new HorizontalLayout();
 			surpriseLayout.setSizeFull();
-			surpriseLayout.addComponent(createSurpiseTags(surprise.getProductName(), 350));
-			surpriseLayout.addComponent(createSurpiseTags(surprise.getColor(),100));
-			surpriseLayout.addComponent(createSurpiseTags(String.valueOf(surprise.getConsistency()),100));
-			surpriseLayout.addComponent(createSurpiseTags(String.valueOf(surprise.getPrice())+"$", 100));
+			surpriseLayout.addComponent(createSurpriseTags(surprise.getProductName(), 350));
+			surpriseLayout.addComponent(createSurpriseTags(surprise.getColor(),100));
+			surpriseLayout.addComponent(createSurpriseTags(String.valueOf(surprise.getConsistency()),100));
+			surpriseLayout.addComponent(createSurpriseTags(String.valueOf(surprise.getPrice())+"$", 100));
 
 			surpriseLayout.setExpandRatio(surpriseLayout.getComponent(0), 1.0f);
 
@@ -97,7 +97,7 @@ public class BrowserView extends VerticalLayout {
 		return layout;
 	}
 
-	private Label createSurpiseTags(String value, int width){
+	private Label createSurpriseTags(String value, int width){
 		Label label = new Label(value);
 		label.setWidth(width, Unit.PIXELS);
 		return label;

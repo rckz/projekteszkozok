@@ -7,6 +7,7 @@ package com.meglepeteskuldo.backend.repositories;
 
 import com.meglepeteskuldo.backend.entities.Consistency;
 import com.meglepeteskuldo.backend.entities.Surprise;
+import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
