@@ -3,6 +3,7 @@ package com.meglepeteskuldo.frontend.views;
 import java.util.Arrays;
 
 import com.meglepeteskuldo.backend.entities.Surprise;
+import com.meglepeteskuldo.frontend.ButtonLayout;
 import com.meglepeteskuldo.frontend.MonitorUI;
 import com.vaadin.server.Page;
 import com.vaadin.ui.Button;
@@ -61,7 +62,8 @@ public class OrderView extends VerticalLayout {
 		} else {
 			MonitorUI.getCurrent().getOp().sendOrder(MonitorUI.getCurrent().getUser(), nameCb.getValue(),
 					addressTa.getValue(), msgTa.getValue());
-			new Notification("A rendelés feladva", Type.HUMANIZED_MESSAGE).show(Page.getCurrent());;
+			new Notification("A rendelés feladva", Type.HUMANIZED_MESSAGE).show(Page.getCurrent());
+			((ButtonLayout)MonitorUI.getCurrent().getButtonLayout()).getHomeButton().click();
 		}
 	}
 

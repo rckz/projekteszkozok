@@ -32,7 +32,8 @@ public class SurpriseService extends SuperService<Surprise, SurpriseRepository>{
         }
     }
 
-    public List<Surprise> getSupriseByEverything(String name, String color, Consistency consistency, int price){
-        return repository.findByProductNameLikeAndColorLikeAndConsistencyAndPrice(name, color, consistency, price);
+    public List<Surprise> getSurpriseByEverything(String name, String color, Consistency consistency, int price){
+        return repository.findByProductNameContainingAndColorContainingAndConsistencyAndPriceLessThanEqual
+                (name, color, consistency, price);
     }
 }

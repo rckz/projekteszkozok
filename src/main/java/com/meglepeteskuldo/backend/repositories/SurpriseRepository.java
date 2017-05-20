@@ -10,12 +10,14 @@ import com.meglepeteskuldo.backend.entities.Surprise;
 
 import java.util.List;
 
+
+
 /**
  *
  * @author rckz
  */
 public interface SurpriseRepository extends SuperRepository<Surprise>{
     public Surprise findByProductName(String productName);
-    public List<Surprise> findByProductNameLikeAndColorLikeAndConsistencyAndPrice(String productName, String color,
-                                                                          Consistency consistency, int price);
+    public List<Surprise> findByProductNameContainingAndColorContainingAndConsistencyAndPriceLessThanEqual(String productName, String color,
+                                                                                                          Consistency consistency, int price);
 }

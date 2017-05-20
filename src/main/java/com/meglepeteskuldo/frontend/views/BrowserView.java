@@ -39,18 +39,19 @@ public class BrowserView extends VerticalLayout {
 		consistencyCombo.setPlaceholder("Viszkozitás");
 
 		priceField = new TextField();
-		priceField.setPlaceholder("Ár");
-
-		Button searchButton = new Button("Szűrés");
-		searchButton.addClickListener((Button.ClickListener) event -> {
-			showFilteredSurprises();
-		});
-
-		HorizontalLayout menu = new HorizontalLayout();
-		menu.addComponents(nameField, colorField, consistencyCombo, priceField, searchButton);
+		priceField.setPlaceholder("Ár kisebb mint");
 
 		Panel surpisePanel = new Panel();
 		surpisePanel.setContent(showAllSurprises());
+
+		Button searchButton = new Button("Szűrés");
+		searchButton.addClickListener((Button.ClickListener) event -> surpisePanel.setContent(showFilteredSurprises()));
+
+		Button resetButton = new Button("Reset");
+		resetButton.addClickListener((Button.ClickListener) event -> surpisePanel.setContent(showAllSurprises()));
+
+		HorizontalLayout menu = new HorizontalLayout();
+		menu.addComponents(nameField, colorField, consistencyCombo, priceField, searchButton, resetButton);
 
 		this.addComponent(menu);
 		this.addComponent(surpisePanel);
@@ -58,14 +59,17 @@ public class BrowserView extends VerticalLayout {
 
 	private Layout showFilteredSurprises(){
 		String name = nameField.getValue();
+
 		String color = colorField.getValue();
+
 		Consistency consistency = consistencyCombo.getValue();
 
 		String priceValue = priceField.getValue().trim();
-		int price = 0;
+		int price = 999999;
 		if(!StringUtils.isEmpty(priceValue)){
 			price = Integer.parseInt(priceValue);
 		}
+		System.out.println("name: "+name+"; color: "+color+"; consistency: "+consistency+"; price: "+price);
 		return showSurpises(MonitorUI.getCurrent().getSp().getFilteredSurprise(name, color, consistency, price));
 	}
 	private Layout showAllSurprises(){
@@ -73,6 +77,7 @@ public class BrowserView extends VerticalLayout {
 	}
 
 	private VerticalLayout showSurpises(List<Surprise> surprises){
+		System.out.println("------->>>xxxx>>>> "+surprises);
 		VerticalLayout layout = new VerticalLayout();
 		layout.setSizeFull();
 		for (Surprise surprise : surprises) {
@@ -82,6 +87,8 @@ public class BrowserView extends VerticalLayout {
 			surpriseLayout.addComponent(createSurpiseTags(surprise.getColor(),100));
 			surpriseLayout.addComponent(createSurpiseTags(String.valueOf(surprise.getConsistency()),100));
 			surpriseLayout.addComponent(createSurpiseTags(String.valueOf(surprise.getPrice())+"$", 100));
+
+			surpriseLayout.setExpandRatio(surpriseLayout.getComponent(0), 1.0f);
 
 			layout.addComponent(surpriseLayout);
 			layout.setComponentAlignment(surpriseLayout, Alignment.MIDDLE_CENTER);

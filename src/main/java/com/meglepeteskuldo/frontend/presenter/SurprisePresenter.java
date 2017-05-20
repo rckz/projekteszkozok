@@ -20,6 +20,6 @@ public class SurprisePresenter {
 	}
 
 	public List<Surprise> getFilteredSurprise(String name, String color, Consistency consistency, int price){
-		return ss.getSupriseByEverything(name, color, consistency, price);
+		return ss.getSurpriseByEverything(name, color, consistency, price);
 	}
 }
