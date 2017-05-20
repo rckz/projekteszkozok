@@ -11,6 +11,8 @@ import com.meglepeteskuldo.backend.entities.Surprise;
 import com.meglepeteskuldo.backend.repositories.SurpriseRepository;
 import java.awt.Color;
 import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -24,7 +26,7 @@ public class SurpriseService extends SuperService<Surprise, SurpriseRepository>{
     public void createNewSurprise(String productName,int price,String color,String consistency,String imageUrl) throws AlreadyExists{
         if (repository.findByProductName(productName) == null) {
             Surprise surprise = new Surprise(productName, price);
-            surprise.setColor(Color.getColor(color));
+            surprise.setColor(color);
             surprise.setConsistency(Consistency.valueOf(consistency));
             surprise.setImageUrl(imageUrl);
             surprise.setOrder(null);
@@ -33,5 +35,9 @@ public class SurpriseService extends SuperService<Surprise, SurpriseRepository>{
         }else{
             throw new AlreadyExists();
         }
+    }
+
+    public void getSupriseByEverything(String name, String color, String consistency, int price){
+        repository.findByProductNameAndColorAndConsistencyAndPrice(name, color, Consistency.valueOf(consistency), price);
     }
 }

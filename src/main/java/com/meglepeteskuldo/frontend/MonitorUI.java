@@ -50,14 +50,16 @@ public class MonitorUI extends UI {
         buttonLayout = new ButtonLayout(contentLayout);
         mainLayout.addComponent(buttonLayout);
         mainLayout.addComponent(contentLayout);
-        
+        mainLayout.setExpandRatio(buttonLayout, 1.0f);
+        mainLayout.setExpandRatio(contentLayout, 9.0f);
 
+        buttonLayout.getHomeButton().click();
         setContent(mainLayout);
     }
 
     private void createContentLayout() {
         contentLayout = new VerticalLayout();
-        contentLayout.setSizeFull();      
+        contentLayout.setSizeFull();
     }
 
     public MUser getUser() {

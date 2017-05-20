@@ -24,7 +24,6 @@ public class RegisterWindow extends Window {
 	private VerticalLayout vl;
 	private HorizontalLayout hl;
 
-	private Label l;
 	private Label l2;
 
 	private TextField uNameTf;
@@ -40,13 +39,13 @@ public class RegisterWindow extends Window {
 	public RegisterWindow() {
 		super("Regisztráció");
 		center();
+		this.setModal(true);
 		setContent(createContent());
 	}
 
 	private Layout createContent() {
 		vl = new VerticalLayout();
 
-		l = new Label("Regisztráció");
 		nameTf = new TextField("Teles név");
 		uNameTf = new TextField("Felhasználói név");
 		bankAccountTf = new TextField("Bankszámlaszám");
@@ -64,7 +63,7 @@ public class RegisterWindow extends Window {
 
 		hl.addComponents(l2, loginBt);
 
-		vl.addComponents(l, nameTf, uNameTf, pwdPf, bankAccountTf, emailTf, signupBt, hl);
+		vl.addComponents(nameTf, uNameTf, pwdPf, bankAccountTf, emailTf, signupBt, hl);
 
 		return vl;
 	}

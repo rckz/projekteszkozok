@@ -40,7 +40,7 @@ public class Surprise extends AuditSuperClass implements Serializable {
     private int price;
     @Getter
     @Setter
-    private Color color;
+    private String color;
     @Getter
     @Setter
     private Consistency consistency;

@@ -25,8 +25,7 @@ public class LoginWindow extends Window {
 	
 	private VerticalLayout vl;
 	private HorizontalLayout hl;
-	
-	private Label l;
+
 	private Label l2;
 	
 	private TextField uNameTf;
@@ -37,15 +36,15 @@ public class LoginWindow extends Window {
 	private Button signupBt;
 	
 	public LoginWindow(){
-		super("Bejelentkezés");
+		super("Belépés");
 		center();
+		this.setModal(true);
 		setContent(createContent());
 	}
 	
 	private Layout createContent(){
 		vl = new VerticalLayout();
-		
-		l = new Label("Belépés");
+
 		uNameTf = new TextField("Felhasználói név");
 		pwdPf = new PasswordField("Jelszó");
 		
@@ -60,7 +59,7 @@ public class LoginWindow extends Window {
 		
 		hl.addComponents(l2, signupBt);
 		
-		vl.addComponents(l, uNameTf, pwdPf, loginBt, hl);
+		vl.addComponents(uNameTf, pwdPf, loginBt, hl);
 		
 		return vl;
 	}

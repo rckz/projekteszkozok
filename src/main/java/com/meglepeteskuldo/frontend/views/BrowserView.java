@@ -1,35 +1,13 @@
 package com.meglepeteskuldo.frontend.views;
 
-import com.vaadin.ui.ComboBox;
-import com.vaadin.ui.CssLayout;
-import com.vaadin.ui.DateField;
-import com.vaadin.ui.HorizontalLayout;
-import com.vaadin.ui.Label;
-import com.vaadin.ui.Panel;
-import com.vaadin.ui.TextField;
-import com.vaadin.ui.VerticalLayout;
+import com.meglepeteskuldo.backend.entities.Surprise;
+import com.meglepeteskuldo.frontend.MonitorUI;
+import com.meglepeteskuldo.frontend.presenter.SurprisePresenter;
+import com.vaadin.ui.*;
 
-/**
- * Created by Krisztián on 2017. 04. 17..
- */
+import java.util.List;
+
 public class BrowserView extends VerticalLayout {
-	
-	
-	
-	private Panel p;
-	private HorizontalLayout menuHl;
-	private CssLayout picturesCl;
-	private VerticalLayout mainVl;
-	
-	private TextField filterTf;
-	
-	private ComboBox colorCb;
-	private ComboBox consistencyCb;
-	private ComboBox viscosityCb;
-	
-	private DateField dateDf;
-	
-	private Label picturesL;
 
 	public BrowserView() {
 		super();
@@ -37,32 +15,46 @@ public class BrowserView extends VerticalLayout {
 	}
 
 	private void setContent() {
-		p = new Panel();		
-		menuHl = new HorizontalLayout();
-		//responsive lesz-é? + label-ben lesz a html-kód? ;D
-		picturesCl = new CssLayout();
-		mainVl = new VerticalLayout(menuHl, picturesCl);
-		p.setContent(mainVl);
-		
-		filterTf = new TextField("Szűrés");
-		colorCb = new ComboBox<>();
-		consistencyCb = new ComboBox<>();
-		viscosityCb = new ComboBox<>();
-		dateDf = new DateField();
+		TextField filterTf = new TextField();
+		TextField colorCb = new TextField();
+
 		
 		filterTf.setPlaceholder("Szűrés névre");
 		colorCb.setPlaceholder("Színszűrés");
-		consistencyCb.setPlaceholder("Állagszűrés");
-		viscosityCb.setPlaceholder("Viszkozitásszűrés");
-		
-		menuHl.addComponents(filterTf, colorCb, consistencyCb, viscosityCb, dateDf);
-		
-		picturesL = new Label();
-		
-		picturesCl.addComponent(picturesL);
-		
-		this.addComponent(p);
-		
+
+		HorizontalLayout menuHl = new HorizontalLayout();
+		menuHl.addComponents(filterTf, colorCb);
+
+		Panel surpisePanel = new Panel();
+		surpisePanel.setContent(showSurpises());
+
+		this.addComponent(menuHl);
+		this.addComponent(surpisePanel);
+	}
+
+	private VerticalLayout showSurpises(){
+		VerticalLayout layout = new VerticalLayout();
+		layout.setSizeFull();
+		List<Surprise> surprises = MonitorUI.getCurrent().getSp().getAllSurprise();
+		for (Surprise surprise : surprises) {
+			HorizontalLayout surpriseLayout = new HorizontalLayout();
+			surpriseLayout.setSizeFull();
+			surpriseLayout.addComponent(createSurpiseTags(surprise.getProductName()));
+			surpriseLayout.addComponent(createSurpiseTags(surprise.getColor()));
+			surpriseLayout.addComponent(createSurpiseTags(String.valueOf(surprise.getConsistency())));
+			surpriseLayout.addComponent(createSurpiseTags(String.valueOf(surprise.getPrice())+"$"));
+
+			layout.addComponent(surpriseLayout);
+			layout.setComponentAlignment(layout, Alignment.MIDDLE_CENTER);
+		}
+
+		return layout;
+	}
+
+	private Label createSurpiseTags(String value){
+		Label label = new Label(value);
+		label.setWidth(100, Unit.PIXELS);
+		return label;
 	}
 	
 }

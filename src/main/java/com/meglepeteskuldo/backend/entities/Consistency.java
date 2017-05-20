@@ -12,5 +12,14 @@ import java.io.Serializable;
  * @author rckz
  */
 public enum Consistency implements Serializable{
-    HIG,SZILARD
+    HIG,SZILARD;
+
+    @Override
+    public String toString() {
+        if(this.name().equals("HIG")){
+            return "Híg";
+        }else{
+            return "Szilárd";
+        }
+    }
 }

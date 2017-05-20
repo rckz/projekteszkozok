@@ -1,6 +1,7 @@
 package com.meglepeteskuldo.frontend.views;
 
 import com.vaadin.shared.ui.ContentMode;
+import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.VerticalLayout;
 
@@ -26,5 +27,8 @@ public class HomeView extends VerticalLayout {
 				+ " <p>Csak be kell regisztrálnod, és mehet a móka.</p><p> Válaszd ki a neked tetsző meglepetést,"
 				+ " add meg az ismerősöd címét, és üzenj neki.</p><p> Ennyi az egész.</p>", ContentMode.HTML);
 		this.addComponents(title, content);
+
+		this.setComponentAlignment(title, Alignment.MIDDLE_CENTER);
+		this.setComponentAlignment(content, Alignment.MIDDLE_CENTER);
 	}
 }

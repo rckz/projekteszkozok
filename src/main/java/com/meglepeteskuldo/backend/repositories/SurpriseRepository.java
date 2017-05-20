@@ -5,7 +5,10 @@
  */
 package com.meglepeteskuldo.backend.repositories;
 
+import com.meglepeteskuldo.backend.entities.Consistency;
 import com.meglepeteskuldo.backend.entities.Surprise;
+
+import java.util.List;
 
 /**
  *
@@ -13,4 +16,6 @@ import com.meglepeteskuldo.backend.entities.Surprise;
  */
 public interface SurpriseRepository extends SuperRepository<Surprise>{
     public Surprise findByProductName(String productName);
+    public List<Surprise> findByProductNameAndColorAndConsistencyAndPrice(String productName, String color,
+                                                                          Consistency consistency, int price);
 }

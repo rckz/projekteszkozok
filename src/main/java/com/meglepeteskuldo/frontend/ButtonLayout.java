@@ -51,6 +51,7 @@ public class ButtonLayout extends HorizontalLayout {
 		orderButton = new Button("Rendelés");
 		customizeButton(orderButton);
 		orderButton.addClickListener(this::showOrderView);
+		orderButton.setEnabled(false);
 
 		loginButton = new Button("Belépés");
 		customizeButton(loginButton);
@@ -98,9 +99,17 @@ public class ButtonLayout extends HorizontalLayout {
 	private void doLogout(ClickEvent e){
 		MonitorUI.getCurrent().setUser(null);
 		this.replaceComponent(logoutButton, loginButton);
+		orderButton.setEnabled(false);
+		contentLayout.removeAllComponents();
+		contentLayout.addComponent(new HomeView());
 	}
 	
 	public void doLogin(){
 		this.replaceComponent(loginButton, logoutButton);
+		orderButton.setEnabled(true);
+	}
+
+	public Button getHomeButton() {
+		return homeButton;
 	}
 }

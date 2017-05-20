@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 import com.meglepeteskuldo.backend.entities.Surprise;
 import com.meglepeteskuldo.frontend.MonitorUI;
+import com.vaadin.server.Page;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.ComboBox;
@@ -55,15 +56,17 @@ public class OrderView extends VerticalLayout {
 
 	private void doSend(ClickEvent e) {
 		if (nameCb.getValue() == null || optionsCb.getValue() == null || addressTa.getValue() == null) {
+			System.out.println("-----------><>");
 			generateNotification("Üresen hagytál néhány mezőt");
 		} else {
 			MonitorUI.getCurrent().getOp().sendOrder(MonitorUI.getCurrent().getUser(), nameCb.getValue(),
 					addressTa.getValue(), msgTa.getValue());
-			new Notification("A rendelés feladva", Type.HUMANIZED_MESSAGE);
+			new Notification("A rendelés feladva", Type.HUMANIZED_MESSAGE).show(Page.getCurrent());;
 		}
 	}
 
 	private void generateNotification(String msg) {
-		Notification not = new Notification(msg, Type.ERROR_MESSAGE);
+		new Notification(msg, Type.ERROR_MESSAGE).show(Page.getCurrent());
+
 	}
 }
