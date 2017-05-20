@@ -47,8 +47,16 @@ public class Surprise extends AuditSuperClass implements Serializable {
     @Getter
     @Setter
     private String imageUrl;
-    @Getter
-    @Setter
-    @OneToOne
-    private MOrder order;
+
+//    public Surprise(String productName, int price, String color, Consistency consistency, String imageUrl) {
+//        this.productName = productName;
+//        this.price = price;
+//        this.color = color;
+//        this.consistency = consistency;
+//        this.imageUrl = imageUrl;
+//    }
+    //    @Getter
+//    @Setter
+//    @OneToOne
+//    private MOrder order;
 }
