@@ -25,12 +25,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class SurpriseService extends SuperService<Surprise, SurpriseRepository>{    
     public void createNewSurprise(String productName,int price,String color,String consistency,String imageUrl) throws AlreadyExists{
         if (repository.findByProductName(productName) == null) {
-            Surprise surprise = new Surprise(productName, price);
-            surprise.setColor(color);
-            surprise.setConsistency(Consistency.valueOf(consistency));
-            surprise.setImageUrl(imageUrl);
-            surprise.setOrder(null);
-            //surprise.setOrders(new ArrayList<>());
+            Surprise surprise = new Surprise(productName, price,color,Consistency.valueOf(consistency),imageUrl);
             repository.save(surprise);
         }else{
             throw new AlreadyExists();
