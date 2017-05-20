@@ -4,6 +4,7 @@ import com.meglepeteskuldo.backend.entities.MUser;
 import com.meglepeteskuldo.errors.UsernameOrPasswordMismatch;
 import com.meglepeteskuldo.frontend.ButtonLayout;
 import com.meglepeteskuldo.frontend.MonitorUI;
+import com.vaadin.server.Page;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.HorizontalLayout;
@@ -81,6 +82,6 @@ public class LoginWindow extends Window {
 	}
 	
 	private void generateNotification(String msg){
-		Notification not = new Notification(msg, Type.ERROR_MESSAGE);
+		new Notification(msg, Type.ERROR_MESSAGE).show(Page.getCurrent());
 	}
 }
