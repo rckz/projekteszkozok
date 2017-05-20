@@ -63,7 +63,7 @@ public class BrowserView extends VerticalLayout {
 
 		String priceValue = priceField.getValue().trim();
 		int price = 0;
-		if(StringUtils.isEmpty(priceValue)){
+		if(!StringUtils.isEmpty(priceValue)){
 			price = Integer.parseInt(priceValue);
 		}
 		return showSurpises(MonitorUI.getCurrent().getSp().getFilteredSurprise(name, color, consistency, price));
@@ -78,21 +78,21 @@ public class BrowserView extends VerticalLayout {
 		for (Surprise surprise : surprises) {
 			HorizontalLayout surpriseLayout = new HorizontalLayout();
 			surpriseLayout.setSizeFull();
-			surpriseLayout.addComponent(createSurpiseTags(surprise.getProductName()));
-			surpriseLayout.addComponent(createSurpiseTags(surprise.getColor()));
-			surpriseLayout.addComponent(createSurpiseTags(String.valueOf(surprise.getConsistency())));
-			surpriseLayout.addComponent(createSurpiseTags(String.valueOf(surprise.getPrice())+"$"));
+			surpriseLayout.addComponent(createSurpiseTags(surprise.getProductName(), 350));
+			surpriseLayout.addComponent(createSurpiseTags(surprise.getColor(),100));
+			surpriseLayout.addComponent(createSurpiseTags(String.valueOf(surprise.getConsistency()),100));
+			surpriseLayout.addComponent(createSurpiseTags(String.valueOf(surprise.getPrice())+"$", 100));
 
 			layout.addComponent(surpriseLayout);
-			layout.setComponentAlignment(layout, Alignment.MIDDLE_CENTER);
+			layout.setComponentAlignment(surpriseLayout, Alignment.MIDDLE_CENTER);
 		}
 
 		return layout;
 	}
 
-	private Label createSurpiseTags(String value){
+	private Label createSurpiseTags(String value, int width){
 		Label label = new Label(value);
-		label.setWidth(100, Unit.PIXELS);
+		label.setWidth(width, Unit.PIXELS);
 		return label;
 	}
 	
