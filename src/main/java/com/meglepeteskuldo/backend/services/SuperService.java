@@ -12,18 +12,30 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
+ * @file
+ * @author  rckz
+ * @version 1.0
  *
- * @author rckz
+ * @section DESCRIPTION
+ *
  * Minden service ebből az osztályból származik, tartalmazza azokat a műveleteket, amit minden servicenek tudnia kell.
  */
-
 public abstract class SuperService <E extends AuditSuperClass, R extends SuperRepository<E>>{
     @Autowired
     protected R repository;
 
+    /**
+     * Elementi az adatbázisba a megadott entitást
+     * @param entity
+     */
     public void save(E entity) {
         repository.save(entity);        
     }
+
+    /**
+     * Visszaadja az összes entitást
+     * @return entitások egy listája
+     */
     public List<E> findAll(){
         List<E> target = new ArrayList<>();
         repository.findAll().forEach(target::add);

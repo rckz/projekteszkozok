@@ -20,6 +20,16 @@ import org.springframework.transaction.annotation.Transactional;
  *
  * @author rckz
  */
+
+/**
+ * @file
+ * @author  rckz
+ * @version 1.0
+ *
+ * @section DESCRIPTION
+ *
+ * A meglepetésekkel kapcsolatos háttérfolyamatokra szolgál ez az osztály.
+ */
 @Service
 @Transactional
 public class SurpriseService extends SuperService<Surprise, SurpriseRepository>{

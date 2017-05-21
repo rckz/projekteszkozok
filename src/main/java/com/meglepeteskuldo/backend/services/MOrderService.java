@@ -16,8 +16,13 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 /**
+ * @file
+ * @author  rckz
+ * @version 1.0
  *
- * @author rckz
+ * @section DESCRIPTION
+ *
+ * A rendelésekkel kapcsolatos háttérfolyamatokra szolgál ez az osztály.
  */
 @Service
 @Transactional
@@ -29,6 +34,17 @@ public class MOrderService extends SuperService<MOrder, MOrderRepository> {
     @Autowired
     private SurpriseService surpriseService;
 
+    /**
+     * Egy rendelés feladására szolgál.
+     *
+     * Frissíti az összes, a rendeléshez tartozó entitást.
+     *
+     * @param customer
+     * @param surprise
+     * @param address
+     * @param description
+     * @return a managelt customer objekt
+     */
     public MUser placeOrder(MUser customer, Surprise surprise, String address, String description) {
         if (customer != null && surprise != null) {
             customer = mUserService.findOne(customer.getId());
@@ -43,6 +59,14 @@ public class MOrderService extends SuperService<MOrder, MOrderRepository> {
         }
         return customer;
     }
+
+    /**
+     * Egy rendelés törlését végzi el.
+     *
+     * Frissíti az összes, a rendeléshez tartozó entitást.
+     *
+     * @param order
+     */
     @Override
     public void delete(MOrder order){
         MUser customer = order.getCustomer();

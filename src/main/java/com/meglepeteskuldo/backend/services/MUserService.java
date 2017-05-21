@@ -14,8 +14,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
+ * @file
+ * @author  rckz
+ * @version 1.0
  *
- * @author rckz
+ * @section DESCRIPTION
+ *
+ * A felhasználóval kapcsolatos háttérfolyamatokra szolgál ez az osztály.
  */
 @Service
 @Transactional
