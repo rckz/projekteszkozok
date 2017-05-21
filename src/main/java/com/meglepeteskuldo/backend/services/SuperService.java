@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 /**
  *
  * @author rckz
+ * Minden service ebből az osztályból származik, tartalmazza azokat a műveleteket, amit minden servicenek tudnia kell.
  */
 
 public abstract class SuperService <E extends AuditSuperClass, R extends SuperRepository<E>>{

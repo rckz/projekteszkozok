@@ -27,6 +27,13 @@ public class MOrderService extends SuperService<MOrder, MOrderRepository> {
     @Autowired
     private SurpriseService surpriseService;
 
+    /**
+     * Megrendelés létrehozása
+     * @param customer
+     * @param surprise
+     * @param address
+     * @param description
+     */
     public void placeOrder(MUser customer, Surprise surprise, String address, String description) {
         if (customer != null && surprise != null) {
             customer = mUserService.findOne(customer.getId());
@@ -40,6 +47,11 @@ public class MOrderService extends SuperService<MOrder, MOrderRepository> {
             surpriseService.save(surprise);
         }
     }
+
+    /**
+     * Paraméterként megadott rendelés törlése
+     * @param order
+     */
     @Override
     public void delete(MOrder order){
         MUser customer = order.getCustomer();
