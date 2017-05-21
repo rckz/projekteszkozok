@@ -59,16 +59,15 @@ public class OrderView extends VerticalLayout {
 
 	private void doSend(ClickEvent e) {
 		if (nameCb.getValue() == null || optionsCb.getValue() == null || addressTa.getValue() == null) {
-			System.out.println("-----------><>");
 			generateNotification("Üresen hagytál néhány mezőt");
 		} else {
-			MonitorUI.getCurrent().getOp().sendOrder(MonitorUI.getCurrent().getUser(), nameCb.getValue(),
-					addressTa.getValue(), msgTa.getValue());
+			MonitorUI.getCurrent().setUser(MonitorUI.getCurrent().getOp().sendOrder(MonitorUI.getCurrent().getUser(), nameCb.getValue(),
+					addressTa.getValue(), msgTa.getValue()));
 			Notification notification = new Notification("A rendelés feladva", Type.HUMANIZED_MESSAGE);
 			notification.setDelayMsec(3000);
 			notification.show(Page.getCurrent());
 
-			((ButtonLayout)MonitorUI.getCurrent().getButtonLayout()).getHomeButton().click();
+			((ButtonLayout)MonitorUI.getCurrent().getButtonLayout()).getMyOrdersButton().click();
 		}
 	}
 

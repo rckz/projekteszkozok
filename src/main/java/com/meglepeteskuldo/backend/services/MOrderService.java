@@ -13,6 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 /**
  *
  * @author rckz
@@ -27,7 +29,7 @@ public class MOrderService extends SuperService<MOrder, MOrderRepository> {
     @Autowired
     private SurpriseService surpriseService;
 
-    public void placeOrder(MUser customer, Surprise surprise, String address, String description) {
+    public MUser placeOrder(MUser customer, Surprise surprise, String address, String description) {
         if (customer != null && surprise != null) {
             customer = mUserService.findOne(customer.getId());
             surprise = surpriseService.findOne(surprise.getId());
@@ -39,6 +41,7 @@ public class MOrderService extends SuperService<MOrder, MOrderRepository> {
             //surprise.getOrders().add(order);
             surpriseService.save(surprise);
         }
+        return customer;
     }
     @Override
     public void delete(MOrder order){
@@ -51,4 +54,8 @@ public class MOrderService extends SuperService<MOrder, MOrderRepository> {
         surpriseService.save(surprise);
         super.delete(order);
     }
+
+//    public List<MOrder> getOrderByUser(MUser user){
+//        return repository.findByCustomer(user);
+//    }
 }

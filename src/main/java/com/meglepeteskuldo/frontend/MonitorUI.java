@@ -2,6 +2,7 @@ package com.meglepeteskuldo.frontend;
 
 
 
+import com.vaadin.annotations.Theme;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.meglepeteskuldo.backend.entities.MUser;
@@ -18,7 +19,7 @@ import com.vaadin.ui.VerticalLayout;
 //TODO ide fognak jönni autowireddel a servicek, ugyanis azt csak itt fogja tudni beszívni
 //TODO szerintem ha konstruktorukba átadjuk a gombLayoutnak meg a viewknak innen, akkor az működhet
 
-//@Theme("mytheme")
+//@Theme("ValoTheme")
 @SpringUI
 @PreserveOnRefresh
 public class MonitorUI extends UI {

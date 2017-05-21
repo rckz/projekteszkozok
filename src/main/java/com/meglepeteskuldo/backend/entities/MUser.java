@@ -7,11 +7,8 @@ package com.meglepeteskuldo.backend.entities;
 
 import java.io.Serializable;
 import java.util.List;
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -42,7 +39,7 @@ public class MUser extends AuditSuperClass implements Serializable {
     @Setter
     private String address;
 
-    @OneToMany
+    @OneToMany(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
     @Getter
     @Setter
     List<MOrder> orders;

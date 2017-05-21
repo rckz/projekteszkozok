@@ -2,6 +2,7 @@ INSERT INTO MUser (ID,DATE_CREATED,IS_DELETED,ADDRESS,EMAIL,NAME,PASSWORD) value
 INSERT INTO MUser (ID,DATE_CREATED,IS_DELETED,ADDRESS,EMAIL,NAME,PASSWORD) values(2,'2017-05-20',0,'újpestanegyedem','krisztian.harkai@guyswithmediumdicks.com','Harkai Krisztián','ilovedicks');
 INSERT INTO MUser (ID,DATE_CREATED,IS_DELETED,ADDRESS,EMAIL,NAME,PASSWORD) values(3,'2017-05-20',0,'noideabutshouldbepsychward','fodorlaci@guyswithsmalldicks.com','Fodor László','ilovetakingitintheass');
 INSERT INTO MUser (ID,DATE_CREATED,IS_DELETED,ADDRESS,EMAIL,NAME,PASSWORD) values(4,'2017-05-20',0,'angyalföld','sando@guyswithsmalldicks.com','Andó Sándor','rumlibátya');
+INSERT INTO MUser (ID,DATE_CREATED,IS_DELETED,ADDRESS,EMAIL,NAME,PASSWORD) values(5,'2017-05-20',0,'Utca','asd@asdcom','asd','asd');
 
 INSERT INTO SURPRISE (ID,DATE_CREATED,IS_DELETED,COLOR,CONSISTENCY,IMAGE_URL,PRICE,PRODUCT_NAME) values(1,'2017-05-20',0,'sárga',0,'',1337,'melegsós puding');
 INSERT INTO SURPRISE (ID,DATE_CREATED,IS_DELETED,COLOR,CONSISTENCY,IMAGE_URL,PRICE,PRODUCT_NAME) values(2,'2017-05-20',0,'barna',1,'',3600,'Ünnepi előmelegített vacsora');

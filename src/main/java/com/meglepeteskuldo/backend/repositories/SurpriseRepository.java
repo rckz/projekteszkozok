@@ -19,6 +19,8 @@ import java.util.List;
  */
 public interface SurpriseRepository extends SuperRepository<Surprise>{
     public Surprise findByProductName(String productName);
-    public List<Surprise> findByProductNameContainingAndColorContainingAndConsistencyAndPriceLessThanEqual(String productName, String color,
-                                                                                                          Consistency consistency, int price);
+    List<Surprise> findByProductNameContainingAndColorContainingAndConsistencyAndPriceLessThanEqual
+            (String productName, String color, Consistency consistency, int price);
+    List<Surprise> findByProductNameContainingAndColorContainingAndPriceLessThanEqual
+            (String productName, String color, int price);
 }

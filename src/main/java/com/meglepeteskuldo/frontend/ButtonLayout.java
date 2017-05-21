@@ -1,14 +1,11 @@
 package com.meglepeteskuldo.frontend;
 
+import com.meglepeteskuldo.frontend.views.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.meglepeteskuldo.frontend.presenter.OrderPresenter;
 import com.meglepeteskuldo.frontend.presenter.SurprisePresenter;
 import com.meglepeteskuldo.frontend.presenter.UserPresenter;
-import com.meglepeteskuldo.frontend.views.BrowserView;
-import com.meglepeteskuldo.frontend.views.HomeView;
-import com.meglepeteskuldo.frontend.views.LoginWindow;
-import com.meglepeteskuldo.frontend.views.OrderView;
 import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Button.ClickEvent;
@@ -27,6 +24,7 @@ public class ButtonLayout extends HorizontalLayout {
 	private Button homeButton;
 	private Button browserButton;
 	private Button orderButton;
+	private Button myOrdersButton;
 	private Button loginButton;
 	private Button logoutButton;
 
@@ -52,6 +50,14 @@ public class ButtonLayout extends HorizontalLayout {
 		customizeButton(orderButton);
 		orderButton.addClickListener(this::showOrderView);
 		orderButton.setEnabled(false);
+
+		myOrdersButton = new Button("Rendeléseim");
+		customizeButton(myOrdersButton);
+		myOrdersButton.addClickListener((Button.ClickListener) event -> {
+			contentLayout.removeAllComponents();
+			contentLayout.addComponent(new MyOrdersView());
+		});
+		myOrdersButton.setEnabled(false);
 
 		loginButton = new Button("Belépés");
 		customizeButton(loginButton);
@@ -100,6 +106,7 @@ public class ButtonLayout extends HorizontalLayout {
 		MonitorUI.getCurrent().setUser(null);
 		this.replaceComponent(logoutButton, loginButton);
 		orderButton.setEnabled(false);
+		myOrdersButton.setEnabled(false);
 		contentLayout.removeAllComponents();
 		contentLayout.addComponent(new HomeView());
 	}
@@ -107,9 +114,14 @@ public class ButtonLayout extends HorizontalLayout {
 	public void doLogin(){
 		this.replaceComponent(loginButton, logoutButton);
 		orderButton.setEnabled(true);
+		myOrdersButton.setEnabled(true);
 	}
 
 	public Button getHomeButton() {
 		return homeButton;
+	}
+
+	public Button getMyOrdersButton() {
+		return myOrdersButton;
 	}
 }
