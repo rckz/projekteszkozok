@@ -22,7 +22,16 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Service
 @Transactional
-public class SurpriseService extends SuperService<Surprise, SurpriseRepository>{    
+public class SurpriseService extends SuperService<Surprise, SurpriseRepository>{
+    /**
+     * Új meglepetés felvétele a paraméterek megadásával
+     * @param productName
+     * @param price
+     * @param color
+     * @param consistency
+     * @param imageUrl
+     * @throws AlreadyExists
+     */
     public void createNewSurprise(String productName,int price,String color,String consistency,String imageUrl) throws AlreadyExists{
         if (repository.findByProductName(productName) == null) {
             Surprise surprise = new Surprise(productName, price,color,Consistency.valueOf(consistency),imageUrl);
@@ -31,7 +40,14 @@ public class SurpriseService extends SuperService<Surprise, SurpriseRepository>{
             throw new AlreadyExists();
         }
     }
-
+    /**
+     * Megkeresi azokat a meglepetéseket, amikre illenek a megadott tulajdonságok
+     * @param name
+     * @param color
+     * @param consistency
+     * @param price
+     * @return surprise
+     */
     public List<Surprise> getSurpriseByEverything(String name, String color, Consistency consistency, int price){
         if(consistency == null){
             return repository.findByProductNameContainingAndColorContainingAndPriceLessThanEqual

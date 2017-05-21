@@ -20,7 +20,14 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @Transactional
 public class MUserService extends SuperService<MUser, MUserRepository> {
-
+    /**
+     * Új felhasználó regisztrálása
+     * @param name
+     * @param password
+     * @param email
+     * @param address
+     * @throws AlreadyExists
+     */
     public void registerNewUser(String name, String password, String email, String address) throws AlreadyExists {
         if (repository.findByName(name) == null) {
             MUser user = new MUser();
@@ -34,7 +41,14 @@ public class MUserService extends SuperService<MUser, MUserRepository> {
             throw new AlreadyExists("");
         }
     }
-    
+
+    /**
+     * Felhasználó adatok ellenőrzése, hogy beléphet-e
+     * @param name
+     * @param password
+     * @return ha van ilyen felhasználó, akkor azt adja vissza
+     * @throws UsernameOrPasswordMismatch
+     */
     public MUser userCanLogin(String name,String password) throws UsernameOrPasswordMismatch{
         MUser found = repository.findByName(name);
         if(found == null || !found.getPassword().equals(password)){
