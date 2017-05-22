@@ -7,4 +7,4 @@
 - Fodor László</br>
 
 ### Feladat rövid leírása:</br>
-Ajándék küldő alkalmazás. A regisztrált felhasználók meglepetést tudnak küldeni akinek akarnak.
+Ajándék küldő alkalmazás. A regisztrált felhasználók meglepetést tudnak küldeni szerencsés ismerőseiknek.
