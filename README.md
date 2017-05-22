@@ -1,10 +1,10 @@
 # projekteszkozok
 
-#Fantasztikus négyes csapat
--Harkai Krisztián
--Andó Sándor
--Máté Balázs
--Fodor László
+#Fantasztikus négyes csapat </br>
+-Harkai Krisztián</br>
+-Andó Sándor</br>
+-Máté Balázs</br>
+-Fodor László</br>
 
-##Feladat rövid leírása:
+##Feladat rövid leírása:</br>
 Ajándék küldő alkalmazás. A regisztrált felhasználók meglepetést tudnak küldeni akinek akarnak.
