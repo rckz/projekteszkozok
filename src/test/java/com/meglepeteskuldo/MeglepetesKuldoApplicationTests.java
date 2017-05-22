@@ -36,10 +36,10 @@ public class MeglepetesKuldoApplicationTests {
             //        supriseService.save(new Surprise("SHIT", 12));
 //        System.out.println(supriseService.findAll().get(0).getProductName());
 //            mUserService.registerNewUser("anyad", "anyad", "anyad", "anyad");
-            mUserService.registerNewUser("anyad", "anyad", "anyad", "anyad");
+            mUserService.registerNewUser("awdsd", "awddaw", "awdwd", "awdwad");
             System.out.println(mUserService.findAll().get(0).getName());
 
-            supriseService.createNewSurprise("anyadProduct", 5, "YELLOW", "HIG", "asdasd");
+            supriseService.createNewSurprise("awdwdProduct", 5, "YELLOW", "HIG", "asdasd");
             System.out.println(supriseService.findAll().get(0).getProductName());
             
             mOrderService.placeOrder(mUserService.findAll().get(0), supriseService.findAll().get(0), "cim", "desc");
