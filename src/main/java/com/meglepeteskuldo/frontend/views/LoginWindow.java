@@ -72,7 +72,7 @@ public class LoginWindow extends Window {
 			MonitorUI.getCurrent().removeWindow(this);
 			((ButtonLayout) MonitorUI.getCurrent().getButtonLayout()).doLogin();
 		} catch (UsernameOrPasswordMismatch e1) {
-			generateNotification("Hibás felhasználónév, vagy jelszó"+e1);
+			generateNotification("Hibás felhasználónév, vagy jelszó!");
 		}
 	}
 	

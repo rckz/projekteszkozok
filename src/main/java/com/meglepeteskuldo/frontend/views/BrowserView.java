@@ -74,9 +74,15 @@ public class BrowserView extends VerticalLayout {
 		String priceValue = priceField.getValue().trim();
 		int price = 999999;
 		if(!StringUtils.isEmpty(priceValue)){
-			price = Integer.parseInt(priceValue);
+			try{
+				price = Integer.parseInt(priceValue);
+				return showSurprises(MonitorUI.getCurrent().getSp().getFilteredSurprise(name, color, consistency, price));
+			}catch(Exception e){
+				new Notification("Az árnak egy egész számot kell megadni!",
+						Notification.Type.ERROR_MESSAGE).show(Page.getCurrent());
+			}
 		}
-		return showSurprises(MonitorUI.getCurrent().getSp().getFilteredSurprise(name, color, consistency, price));
+		return new VerticalLayout();
 	}
 	private Layout showAllSurprises(){
 		return showSurprises(MonitorUI.getCurrent().getSp().getAllSurprise());

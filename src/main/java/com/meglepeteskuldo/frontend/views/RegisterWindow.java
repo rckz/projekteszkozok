@@ -82,9 +82,9 @@ public class RegisterWindow extends Window {
 			MonitorUI.getCurrent().removeWindow(this);
 			((ButtonLayout) MonitorUI.getCurrent().getButtonLayout()).doLogin();
 		} catch (AlreadyExists e1) {
-			generateNotification("Már létezik ilyen felhasználó" + e1);
+			generateNotification("Már létezik ilyen felhasználó!");
 		} catch (UsernameOrPasswordMismatch e1) {
-			generateNotification("Hibás felhasználónév, vagy jelszó" + e1);
+			generateNotification("Hibás felhasználónév, vagy jelszó!");
 		}
 	}
 
